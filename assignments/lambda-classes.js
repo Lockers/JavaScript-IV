@@ -31,16 +31,21 @@ class Instructor extends Person {
         return `${student.name} recieves a perfect score on ${subject}`
     }
     gradePoints(student) {
-        student.grade += 10;
-        while (student.grade <= 69 && student.grade > 0 ) {
-            student.grade = student.grade + Math.round(Math.random()) * 2 - 1
-            if (student.grade === 0) {
-                return `You are so bad we had to throw you out, your grade is ${student.grade}`
+        if (student.grade < 100) {
+            student.grade += 10;
+            while (student.grade <= 69 && student.grade > 0) {
+                student.grade = student.grade + Math.round(Math.random()) * 2 - 1
+                if (student.grade === 0) {
+                    return `You are so bad we had to throw you out, your grade is ${student.grade}`
+                }
+                console.log(`You suck, your grade is ${student.grade}  Get better or I will kill you!`);
             }
-            console.log(`You suck, your grade is ${student.grade}  Get better or I will kill you!`);
-            // setInterval(1000);
         }
-
+        else if (student.grade >= 100) {
+            student.grade = 100;
+            console.log(`${student.name} You are the greatest student of all time.. bask in your glory`)
+            return student.coursePassed();
+        }   
         return student.coursePassed();
     }
 }
@@ -72,9 +77,7 @@ class Student extends Person {
         return `${this.name} has bugun sprint challenge on ${subject}.`
     }
     coursePassed() {
-        if (this.grade >= 70) {
-            return `You have passed this course with a score of ${this.grade}%`
-        }
+        return `You have passed this course with a score of ${this.grade}%`
     }
 }
 
