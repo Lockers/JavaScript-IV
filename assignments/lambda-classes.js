@@ -1,3 +1,5 @@
+//Person Class Main class
+
 class Person {
     constructor(object) {
         this.name = object.name;
@@ -9,6 +11,7 @@ class Person {
         return `Hello my name is ${this.name}, I am from ${this.location}`;
     }
 }
+//Test case for Person
 
 const Matthew = new Person({
     name: 'Matt',
@@ -16,6 +19,8 @@ const Matthew = new Person({
     location: 'The Moon',
     gender: 'Neutral'
 })
+
+//Instructor class inherits from Person
 
 class Instructor extends Person {
     constructor(object) {
@@ -30,6 +35,8 @@ class Instructor extends Person {
     grade(student, subject) {
         return `${student.name} recieves a perfect score on ${subject}`
     }
+    // Stretch Goals
+
     gradePoints(student) {
         if (student.grade < 100) {
             student.grade += 10;
@@ -50,14 +57,17 @@ class Instructor extends Person {
     }
 }
 
+// Instructor test case
+
 const Brian = new Instructor({
     name: 'Brian',
-    age: 435,
+    age: 12,
     location: 'Parts Unknown',
     gender: 'Male',
-    speciality: 'Knives',
-    catchphrase: 'So you think your a Dev?'
+    speciality: 'Kung Fu',
+    catchphrase: 'Be like water'
 })
+// Student class constructor, inherits from Person
 
 class Student extends Person {
     constructor(object) {
@@ -76,10 +86,14 @@ class Student extends Person {
     sprintChallenge(subject) {
         return `${this.name} has bugun sprint challenge on ${subject}.`
     }
+    // Stretch Goal
+
     coursePassed() {
         return `You have passed this course with a score of ${this.grade}%`
     }
 }
+
+// Student test case
 
 const Matt = new Student({
     name: 'Matt',
@@ -87,10 +101,13 @@ const Matt = new Student({
     location: 'The Moon',
     gender: 'Neutral',
     previousBackground: 'Moonwalker',
-    className: 'Fairies',
+    className: 'EU2',
     favSubjects: ['HTML', ' CSS ', ' Javascript'],
+    //stretch Goal
     grade: Math.round(Math.random() * 100)
 })
+
+// Project manager class, inherits from Instructor
 
 class ProjectManager extends Instructor {
     constructor(object) {
@@ -105,6 +122,8 @@ class ProjectManager extends Instructor {
         return `${this.name} debugs ${student.name}'s code on ${subject}.`
     }
 }
+
+// Project manager test case
 
 const Borja = new ProjectManager({
     name: 'Borja',
