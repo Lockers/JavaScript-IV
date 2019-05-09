@@ -41,7 +41,7 @@ class Instructor extends Person {
             // setInterval(1000);
         }
 
-        return student.grade;
+        return student.coursePassed();
     }
 }
 
