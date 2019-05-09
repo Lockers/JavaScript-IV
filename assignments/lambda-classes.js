@@ -30,6 +30,19 @@ class Instructor extends Person {
     grade(student, subject) {
         return `${student.name} recieves a perfect score on ${subject}`
     }
+    gradePoints(student) {
+        student.grade += 10;
+        while (student.grade <= 69 && student.grade > 0 ) {
+            student.grade = student.grade + Math.round(Math.random()) * 2 - 1
+            if (student.grade === 0) {
+                return `You are so bad we had to throw you out, your grade is ${student.grade}`
+            }
+            console.log(`You suck, your grade is ${student.grade}  Get better or I will kill you!`);
+            // setInterval(1000);
+        }
+
+        return student.grade;
+    }
 }
 
 const Brian = new Instructor({
@@ -47,6 +60,7 @@ class Student extends Person {
         this.previousBackground = object.previousBackground;
         this.className = object.className;
         this.favSubjects = object.favSubjects;
+        this.grade = object.grade;
     }
     listSubjects() {
         return `These are my favourite subjects ${this.favSubjects}`
@@ -57,6 +71,11 @@ class Student extends Person {
     sprintChallenge(subject) {
         return `${this.name} has bugun sprint challenge on ${subject}.`
     }
+    coursePassed() {
+        if (this.grade >= 70) {
+            return `You have passed this course with a score of ${this.grade}%`
+        }
+    }
 }
 
 const Matt = new Student({
@@ -66,7 +85,8 @@ const Matt = new Student({
     gender: 'Neutral',
     previousBackground: 'Moonwalker',
     className: 'Fairies',
-    favSubjects: ['HTML', ' CSS ', ' Javascript']
+    favSubjects: ['HTML', ' CSS ', ' Javascript'],
+    grade: Math.round(Math.random() * 100)
 })
 
 class ProjectManager extends Instructor {
